@@ -15,7 +15,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppUserContext>(options =>
 options.UseNpgsql(builder.Configuration.GetConnectionString("RealEstateDb")));
 
-builder.Services.AddIdentity<User, IdentityRole>()
+builder.Services.AddIdentity<User,Role>()
         .AddEntityFrameworkStores<AppUserContext>()
         .AddDefaultTokenProviders();
   
@@ -38,11 +38,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
- 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Account}/{action=Login}/{id?}");
 
 app.Run();

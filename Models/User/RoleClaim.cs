@@ -6,7 +6,7 @@ namespace RealEstateApp.Models.User
  public class RoleClaim:IdentityRoleClaim<string>
 {
 
-     public virtual Role Role { get; set; }
+     public virtual Role? Role { get; set; }
    
 }
 

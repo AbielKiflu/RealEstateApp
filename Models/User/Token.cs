@@ -5,7 +5,7 @@ namespace RealEstateApp.Models.User
 
  public class Token:IdentityUserToken<string>
 {
-      public virtual User User { get; set; }
+      public virtual User? User { get; set; }
    
 }
 
