@@ -17,7 +17,7 @@ namespace RealEstateApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("ProductVersion", "7.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -89,7 +89,6 @@ namespace RealEstateApp.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("RoleId1")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -218,7 +217,6 @@ namespace RealEstateApp.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("RoleId1")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("UserId", "RoleId");
@@ -251,9 +249,7 @@ namespace RealEstateApp.Migrations
 
                     b.HasOne("RealEstateApp.Models.User.Role", "Role")
                         .WithMany("RoleClaims")
-                        .HasForeignKey("RoleId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoleId1");
 
                     b.Navigation("Role");
                 });
@@ -290,9 +286,7 @@ namespace RealEstateApp.Migrations
 
                     b.HasOne("RealEstateApp.Models.User.Role", "Role")
                         .WithMany("UserRoles")
-                        .HasForeignKey("RoleId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoleId1");
 
                     b.HasOne("RealEstateApp.Models.User.User", "User")
                         .WithMany("UserRoles")
